@@ -1,0 +1,18 @@
+{
+  "name": "voting-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "scripts": {
+    "test": "npm run docker:geth:pull && npm run start:geth && npm run test:development && npm run stop:geth",
+    "test:development": "truffle test --network development",
+    "start:geth": "docker run -p 8545:8545 -p 8546:8546 -e DEV_CHAIN_ENABLED=true --name geth-esp-test aragon/geth-devnet &>/dev/null &",
+    "stop:geth": "docker rm -f geth-esp-test",
+    "docker:geth:pull": "docker pull aragon/geth-devnet"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "truffle": "^5.0.5"
+  }
+}
